@@ -1,0 +1,27 @@
+﻿<html>
+	<head>
+		<title>Hello JS</title>
+		<script>
+			function test() {
+			
+				var txtWel = document.getElementById("txtWelcome");
+				var allObjs = document.getElementsByTagName("*");
+				if (txtWel != null && allObjs != null) {
+					txtWel.childNodes[0].nodeValue = "HTML Tag Count: " + allObjs.length;
+					txtWel.style.border = "2px solid #0000FF";
+				} else {
+					alert("Can't find object!");
+				}
+			}
+			
+			function add(n1, n2) {
+				return n1 + n2
+			}
+			
+		</script>
+	</head>
+	<body>
+		<p id="txtWelcome" style="width:200px" >Hello JavaScript</p>
+		<input type="button" value="Click me" onClick="test()">
+	</body
+</html>

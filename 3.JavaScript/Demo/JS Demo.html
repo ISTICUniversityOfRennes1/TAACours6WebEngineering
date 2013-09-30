@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>JavaScript Demo</title>
+	<style type="text/css">
+		body,div,ul,li { margin:0; padding:0; background-color:#111111; }
+		#slide { width:600px; height:480px; position:relative; margin:20px auto; }
+		#pic_list { position:absolute; left:0; bottom:20px; width:100%; list-style: none; overflow:hidden; z-index:2; opacity:0.6; }
+		#pic_list li { float:left; width:100px; height:52px; padding-top:10px; }
+		#pic_list li img { position:absolute; top:18px; width:65px; height:35px; margin:0 20px; border:1px solid #FFFFFF; }
+		#this_pic { position:absolute; width:100%; height:100%;border:1px solid #FFFFFF;}
+	</style>
+	<script language="javascript" type="text/javascript" src="jquery-1.10.2.js"></script>
+	<script type="text/javascript">
+		
+		//show or hide the album by animation.
+		$(function (){
+			$('#slide').mouseenter(function(){
+				$('#pic_list').animate({bottom:'20px', opacity:0.6}, 500);
+			});
+			
+			$('#slide').mouseleave(function(){
+				$('#pic_list').animate({bottom:'0px', opacity:0}, 500);
+			});
+		});
+		
+		//change the canvas by selected image
+		$(function (){
+		
+			$('#pic_list img').mouseover(function(){
+			
+				var seleted_pic = $(this);
+				var this_pic = $('#this_pic');
+				
+				if (seleted_pic == null || this_pic == null)
+					return;
+				
+				if(this_pic.attr('src') == seleted_pic.attr('src')) 
+					return;
+					
+				this_pic.animate( {opacity:0}, 500, function() {
+					this_pic.attr('src', seleted_pic.attr('src')); 
+					this_pic.animate({opacity:1}, 500);
+				});
+				
+				
+				<!-- //var old_Pic=$('#this_pic');
+				//old_Pic.animate( {height:'30%', width:'30%', opacity:'0.8'} ,"slow");
+				//old_Pic.fadeOut(500).fadeIn(1000).attr('src',$(this).attr('src')); -->
+				
+				var seleted_pic_link = $('#this_a');
+				
+				if (seleted_pic_link == null)
+					return;
+					
+				seleted_pic_link.attr('href', this_pic.parents('a').attr('href'));
+				seleted_pic_link.attr('title', this_pic.parents('a').attr('title'));
+				
+				seleted_pic.parents('li').nextAll('li').find('img').animate( {top:18, width:65, height:35, opacity:0.6}, 500);
+				seleted_pic.parents('li').prevAll('li').find('img').animate( {top:18, width:65, height:35, opacity:0.6}, 500);
+				seleted_pic.animate( {top:0, width:80, height:50}, 500).css('opacity', '1');
+			});
+		});
+		
+		$(function(){
+			$('#pic_list img').css({'opacity':'0.6'});
+			$('#pic_list img:eq(0)').css({'top':'0px', width:'80px', height:'50px', 'opacity':'1'});
+			$('#pic_list a').click(function(){return false});
+		});
+		
+	</script>
+</head>
+<body>
+	<div id="slide">
+		<a id="this_a"><img src="images\5.jpg" id="this_pic" /></a>
+		<ul id="pic_list">
+			<li><a id="first_pic" href="images\5.jpg"><img src="images\5.jpg" alt="" /></a></li>
+			<li><a href="images\4.jpg"><img src="images\4.jpg" alt="" /></a></li>
+			<li><a href="images\3.jpg"><img src="images\3.jpg" alt="" /></a></li>
+			<li><a href="images\2.jpg"><img src="images\2.jpg" alt="" /></a></li>
+			<li><a href="images\1.jpg"><img src="images\1.jpg" alt="" /></a></li>
+		</ul>
+	</div>
+</body>
+</html>
