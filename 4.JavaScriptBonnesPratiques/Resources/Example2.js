@@ -1,38 +1,39 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+var String1="Voiture";
+var String2=['V','o','i','t','u','r','e'];
+
 function runTest2(){
-    var beforeTime = new Date().getMilliseconds();
-    executeWithoutCached();
-    var afterTime= new Date().getMilliseconds();
+    var beforeTime = new Date().getTime();
+    var afterTime= new Date().getTime();
+    beforeTime = new Date().getTime();
+    executeWithoutJoin();
+    afterTime= new Date().getTime();
     var temp1=afterTime-beforeTime;
-    //alert("Non Cached time="+temp+" milliseconds");
-    
-    beforeTime=new Date().getMilliseconds();
-    executeWithCached();
-    afterTime= new Date().getMilliseconds();
+    beforeTime=new Date().getTime();
+    executeWithJoin();
+    afterTime= new Date().getTime();
     var temp2=afterTime-beforeTime;
-    alert("Cached time="+temp1+" milliseconds \n Non Cached time="+temp2+" milliseconds");
+    alert("+= time="+temp1+" milliseconds \n push&join time="+temp2+" milliseconds");
 }
 
-function executeWithCached()
+function executeWithoutJoin()
 {
     var i;
-    var newColor;
-    var colorDiv=document.getElementById("div2");                               //cache the variable
-    for(i=0;i<10000;i++){
-        newColor="#"+((1<<24)*Math.random()|0).toString(16);                    //code to select random color
-        colorDiv.style.backgroundColor=newColor;
+    for(i=0;i<1000000;i++){
+        String1+="Voiture"+"Voiture";
     }
+    return String1;
 }
 
-function executeWithoutCached()
+function executeWithJoin()
 {
-    var i;
-    var newColor;
-    for(i=0;i<10000;i++){
-        newColor="#"+((1<<24)*Math.random()|0).toString(16);                    //code to select random color
-        document.getElementById("div2").style.backgroundColor=newColor;
+    var i,j=0;
+    for(i=0;i<1000000;i++){
+        String2.push(String[j]);
+        j++;
+        if(j == 7) { j=0 }
     }
+    String2.join('');
+    return String2;
 }
+
+

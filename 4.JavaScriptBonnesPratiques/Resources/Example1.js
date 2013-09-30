@@ -1,35 +1,34 @@
 function runTest1(){
-    var beforeTime = new Date().getMilliseconds();
-    executeWithJQuery();
-    var afterTime= new Date().getMilliseconds();
+    var beforeTime = new Date().getTime();
+    var afterTime= new Date().getTime();
+    beforeTime = new Date().getTime();
+    executeWithoutCached();
+    afterTime= new Date().getTime();
     var temp1=afterTime-beforeTime;
-    //alert("JQuery time="+temp+" milliseconds");
-    
-    beforeTime=new Date().getMilliseconds();
-    executeWithoutJQuery();
-    afterTime= new Date().getMilliseconds();
+    beforeTime=new Date().getTime();
+    executeWithCached();
+    afterTime= new Date().getTime();
     var temp2=afterTime-beforeTime;
-    alert("Non JQuery time="+temp1+" milliseconds \n Non Cached time="+temp2+" milliseconds");
+    alert("Non Cached time="+temp1+" milliseconds \n Cached time="+temp2+" milliseconds");
 }
 
-function executeWithJQuery()
+function executeWithoutCached()
 {
     var i;
     var newColor;
     for(i=0;i<10000;i++){
-        newColor="#"+((1<<24)*Math.random()|0).toString(16);                       //code to select random color
-        $("#div2").css("background-color",newColor);                               //change color using JQuery functions
+        newColor="#"+((1<<24)*Math.random()|0).toString(16);                    //code to select random color
+        document.getElementById("div2").style.backgroundColor=newColor;
     }
 }
 
-function executeWithoutJQuery()
+function executeWithCached()
 {
     var i;
     var newColor;
+    var colorDiv=document.getElementById("div2");                               //cache the variable
     for(i=0;i<10000;i++){
-        newColor="#"+((1<<24)*Math.random()|0).toString(16);                       //code to select random color
-        document.getElementById("div2").style.backgroundColor=newColor;                      //change color using traditional methods
+        newColor="#"+((1<<24)*Math.random()|0).toString(16);                    //code to select random color
+        colorDiv.style.backgroundColor=newColor;
     }
 }
-
-
