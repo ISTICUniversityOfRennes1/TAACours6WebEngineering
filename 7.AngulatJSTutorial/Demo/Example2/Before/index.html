@@ -1,0 +1,68 @@
+<html lang="fr" ng-app>
+	<head>
+		<script type="text/javascript" src="../../angular.js"></script>
+		<script type="text/javascript" src="controller.js"></script>
+		<link rel="stylesheet" href="../../bootstrap.css">
+		<link rel="stylesheet" href="../../style.css">
+	</head>
+	<body ng-controller="bookController">
+		<h1>Gestion des livres</h1>
+		<table>
+			<tr>
+				<th></th>
+				<th>ISBN</th>
+				<th>Nom</th>
+				<th>Editeur</th>
+			</tr>
+			<tr ng-repeat="book in books">
+				<td><input type="checkbox" ng-model="book.checked" /></td>
+				<td>{{book.ISBN}}</td>
+				<td>{{book.name}}</td>
+				<td>{{book.editor}}</td>
+			</tr>
+		</table>
+		<p>Nombre de livre: {{books.length}}</p>
+		<div class="action">
+			<div>
+				<button class="btn-large btn-primary" ng-click="adding='adding-true'"><i class="icon-plus"></i>Ajouter</button>
+				<button class="btn-large btn-primary"><i class="icon-edit"></i>Modifier</button>
+				<button class="btn-large btn-primary"><i class="icon-trash"></i>Supprimer</button>
+			</div>		
+			<div ng-class="adding">
+				<div>
+					<label>ISBN: <label>
+					<input type="text" ng-model="isbnToAdd" />
+				</div>
+				<div>
+					<label>Nom: </label>
+					<input type="text" ng-model="nameToAdd" />
+				</div>
+				<div>
+					<label>Editeur: </label>
+					<input type="text" ng-model="editorToAdd" />
+				</div>
+				<div>
+					<button type="submit" class="btn-large btn-primary" ng-click="addBook()">Ajouter</button>
+				</div>
+			</div>
+			<div class="modifying-{{modifying}}">
+				<div>
+					<label>ISBN: <label>
+					<input type="text" ng-model="isbnToAdd" />
+				</div>
+				<div>
+					<label>Nom: </label>
+					<input type="text" ng-model="nameToAdd" />
+				</div>
+				<div>
+					<label>Editeur: </label>
+					<input type="text" ng-model="editorToAdd" />
+				</div>
+				<div>
+					<button type="submit" class="btn-large btn-primary" ng-click="addBook()">Ajouter</button>
+				</div>
+			</div>			
+		</div>
+
+	</body>
+</html>
