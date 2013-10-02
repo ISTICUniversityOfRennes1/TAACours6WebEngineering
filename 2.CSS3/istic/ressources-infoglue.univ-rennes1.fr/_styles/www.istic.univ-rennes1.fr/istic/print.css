@@ -1,0 +1,264 @@
+/* -------------------------------------------------------------- 
+  
+   print.css
+   
+-------------------------------------------------------------- */
+
+*
+{
+	border: 0px;
+	font-size: 100%;
+}
+
+body
+{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #000;
+	font-size: 75%;
+}
+
+a:link
+{
+	color: #069;
+}
+
+.hide
+{
+	display: none;
+}
+
+acronym[title]:after
+{
+    content: " (" attr(title) ")";
+}
+
+acronym
+{
+   border-bottom: 0;
+}
+
+div#container div#header
+{
+	display: none;
+}
+
+div#container div#menu-horizontal
+{
+	display: none;
+}
+
+div#container div#breadcrumb
+{
+	display: block;
+	margin: 0px 0px 10px 0px;
+}
+
+div#container div#breadcrumb p
+{
+	display: none;
+}
+
+div#container div#menu-left
+{
+	display: none;
+}
+
+div#container div#content
+{
+	text-align: justify;
+}
+
+div#container div#content img
+{
+	border: solid 1px #fff;
+	background-color: transparent;
+}
+
+div#container div#content img.left,
+div#container div#content span.png-left
+{
+	float: left;
+	margin: 0px 10px 10px 0px;
+}
+
+div#container div#content img.right,
+div#container div#content span.png-right
+{
+	float: right;
+	margin: 0px 0px 10px 10px;
+}
+
+div#container div#content img.left[src$=".png"],
+div#container div#content img.right[src$=".png"]
+{
+	border: none !important;
+}
+
+div#container div#content h1,
+div#container div#content h2,
+div#container div#content h3,
+div#container div#content h4,
+div#container div#content h5,
+div#container div#content h6
+{
+	margin: 0px 0px 10px 0px;
+	text-align: left;
+	background-color: transparent;
+}
+
+div#container div#content h1 span,
+div#container div#content h2 span,
+div#container div#content h3 span,
+div#container div#content h4 span,
+div#container div#content h5 span,
+div#container div#content h6 span
+{
+	font-weight:bold !important;
+	font-style:normal !important;
+}
+
+div#container div#content h1
+{
+	font-size: 160%;
+	color: #006699;
+}
+
+div#container div#content h2
+{
+	font-size: 140%;
+	color: #006699;
+}
+
+div#container div#content h3
+{
+	font-size: 120%;
+	color: #006699;
+}
+
+div#container div#content h4,
+div#container div#content h5,
+div#container div#content h6
+{
+	font-size: 100%;
+	color: #006699;
+}
+
+div#container div#content a
+{
+	text-align: left;
+}
+
+div#container div#content div#content-header ul
+{
+	list-style-type: none;
+}
+
+div#container div#content div#content-header ul li a.email
+{
+	display: none;
+}
+
+div#container div#content div#content-header ul li a.author
+{
+	display: none;
+}
+
+div#container div#content div#content-header ul li a.print
+{
+	display: none;
+}
+
+div#container div#content div#content-footer
+{
+	display: none;
+}
+
+div#container div#footer ul
+{
+	display: none;
+}
+
+div#container div#footer h4
+{
+	display: block;
+	text-align: right;
+}
+
+table,
+td,
+th
+{
+	/*padding: 10px;*/
+	padding: 6px;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	font-size: 90%;
+}
+
+table,
+td 
+{
+	/*height: 100%;*/
+}
+
+table.no-border
+{
+	border: none;
+}
+
+caption
+{
+	/*padding: 10px;*/
+	padding: 6px;
+}
+
+div#container div#content blockquote
+{
+	margin: 10px 0px 10px 0px;
+	padding: 10px 10px 10px 10px;
+	text-align: justify;
+	border: solid 1px #000;
+	background-color: transparent;
+}
+
+div#container div#content blockquote p
+{
+	margin: 5px 0px 5px 0px;
+}
+
+div#container div#content blockquote.grey
+{
+	border: solid 1px #cccccc;
+	background-color: #f1f1f1;
+}
+
+div#container div#content blockquote.grey h1,
+div#container div#content blockquote.grey h2,
+div#container div#content blockquote.grey h3,
+div#container div#content blockquote.grey h4,
+div#container div#content blockquote.grey h5,
+div#container div#content blockquote.grey h6
+{
+	color: #444;
+}
+
+div.accordion div.panel div.header
+{
+	padding: 2px 0px 2px 0px;
+	border-bottom: solid 1px #ccc;
+}
+
+div.accordion div.panel div.header a
+{
+	color: #000;
+	font-weight: bold; 
+	text-decoration: none;
+}
+
+div.accordion div.panel div.content
+{
+	display: block;
+	padding: 0px 10px 0px 10px;
+	border: solid 1px #fff;
+	background-color: #fff;
+}
