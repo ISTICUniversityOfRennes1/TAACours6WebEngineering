@@ -38,5 +38,3 @@ function executeWithArrLength()
         arr[i]=Math.random();
     }
 }
-
-

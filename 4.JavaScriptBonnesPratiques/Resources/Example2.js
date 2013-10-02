@@ -40,5 +40,3 @@ function executeWithJoin()
     String2.join('');                                                           
     return String2;
 }
-
-

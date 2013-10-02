@@ -9,6 +9,8 @@
        <script type="text/javascript" src='Resources/jquery-2.0.3.min.js'></script>
        <link href='Resources/Stylesheet.css' rel='stylesheet' type='text/css'/>
        <script type="text/javascript" src='Resources/Example3.js'></script>
+       <script type="text/javascript" src='Resources/Common.js'></script>
+       <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=javascript&skin=sons-of-obsidian"></script>
        
        <title>Example 3 - Réutiliser les grands tableaux - Anthony Economides</title>
 
@@ -16,15 +18,55 @@
        <link href='https://fonts.googleapis.com/css?family=Telex' rel='stylesheet' type='text/css'/>
 
     </head>
-    <body >
+    <body onload="prettyPrint()">
         <div class="div1">Example 3 - Réutiliser les grands tableaux</div>
         <div class="buttondiv1"><a class="backButton" href="index.html"><img style="vertical-align:middle" alt="" src="Resources/back.png"/>Retour</a></div>
         <br/>
         <div class="div3">Ce test va créer un grand tableau de 15 000 000 cellules puis le remplira avec des int aléatoires.<br/>
-            Ensuite il écrasera ce tableau avec arr=[ ] et le recréera. Finalement il réutilisera le tableau avec<br/>
-            arr.length=0. Le temps d'exécution des deux derniers processus sera annoncé.<br/>Notez que le test prend quelques secondes à s'executer.
+            Ensuite il écrasera ce tableau avec l'expression arr=[ ] et le recréera. Finalement il réutilisera le tableau avec<br/>
+            l'expression arr.length=0. Le temps d'exécution des deux derniers processus sera annoncé.<br/>Notez que le test prend quelques secondes à s'executer.
             <br/><br/><button onclick="runTest3()">Run Test</button></div>
-        
+        <div class="tab" onclick="SlideCodeUp()">Afficher Code</div>
+            <div class="codeDisplay" ><pre class="prettyprint linenums">var arr=new Array();
+/*
+ * Sets up and runs the third test.
+ */
+function runTest3(){
+    for (var i = 0; i < 15000000; i++) {                                        //prepare array
+        arr[i]=Math.random();
+    }
+    var beforeTime = new Date().getTime();                                      //Prepare and get time variables
+    var afterTime= new Date().getTime();
+    beforeTime = new Date().getTime();
+    executeWithArrEqualsEmpty();                                                //run first part of the test, "using arr=[ ]"
+    afterTime= new Date().getTime();
+    var temp1=afterTime-beforeTime;                                             //get execution time of first part of test
+    beforeTime=new Date().getTime();                                            //reinitialize timers
+    executeWithArrLength();                                                     //run second part of the test, "using arr.length"
+    afterTime= new Date().getTime();
+    var temp2=afterTime-beforeTime;                                             //get execution time of second part of test
+    alert("arr=[] time="+temp1+" milliseconds \n arr.length time="+temp2+" milliseconds");
+}
+/*
+ * Sets up and runs the first part of this test.
+ */
+function executeWithArrEqualsEmpty()
+{
+    arr=[];                                                                     //clear the array
+    for (var i = 0; i < 15000000; i++) {                                        //repopulate the array
+        arr[i]=Math.random();
+    }
+}
+/*
+ * Sets up and runs the second part of this test.
+ */
+function executeWithArrLength()
+{
+    arr.length=0;                                                               //clear the array
+    for (var i = 0; i < 15000000; i++) {                                        //repopulate the array
+        arr[i]=Math.random();
+    }
+}</pre></div>
 <span style="color:silver; font-size:12px; font-family:Mate; position:fixed; bottom:0px; left:3px;">JS Bonnes Pratiques Example 3 - Anthony Economides</span>
 
     </body>

@@ -8,7 +8,9 @@
        
        <script type="text/javascript" src='Resources/jquery-2.0.3.min.js'></script>
        <link href='Resources/Stylesheet.css' rel='stylesheet' type='text/css'/>
-       <script type="text/javascript" src='Resources/Example1.js'></script>
+       <script type="text/javascript" src='Resources/Example1.js'/></script>
+       <script type="text/javascript" src='Resources/Common.js'></script>
+       <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=javascript&skin=sons-of-obsidian"></script>
        
        <title>JS Example 1 - Cached Variables - Anthony Economides</title>
 
@@ -16,15 +18,56 @@
        <link href='https://fonts.googleapis.com/css?family=Telex' rel='stylesheet' type='text/css'/>
 
     </head>
-    <body >
+    <body onload="prettyPrint()">
         <div class="div1" >Example 1 - Cached Variables</div><div id="div2"></div>
         <div class="buttondiv1"><a class="backButton" href="index.html"><img style="vertical-align:middle" alt="" src="Resources/back.png"/>Retour</a></div>
         <br/>
         <div class="div3">Ce test va changer la couleur de la petite boite au centre de la page en une couleur aléatoire.<br/>
-            Le processus sera répété 20 000 fois; 10 000 sans utiliser une cached variable et 10 000 avec.<br/>
+            Le processus sera répété 200 000 fois; 100 000 sans utiliser une cached variable et 100 000 avec.<br/>
             Le temps d'exécution sans ou avec des cached variables sera annoncé.
             <br/><br/><button onclick="runTest1()">Run Test</button></div>
-        
+        <div class="tab" onclick="SlideCodeUp()">Afficher Code</div>
+            <div class="codeDisplay" ><pre class="prettyprint linenums">/*
+ * Sets up and runs the first test.
+ */
+function runTest1(){
+    var beforeTime = new Date().getTime();                                      //Prepare and get time variables
+    var afterTime= new Date().getTime();
+    beforeTime = new Date().getTime();
+    executeWithoutCached();                                                     //run first part of the test, "without cached variables" 
+    afterTime= new Date().getTime();
+    var temp1=afterTime-beforeTime;                                             //get execution time of first part of test
+    beforeTime=new Date().getTime();                                            //reinitialize timers
+    executeWithCached();                                                        //run second part of the test, "with cached variables"
+    afterTime= new Date().getTime();
+    var temp2=afterTime-beforeTime;                                             //get execution time of second part of test
+    alert("Non Cached time="+temp1+" milliseconds \n Cached time="+temp2+" milliseconds");
+}
+/*
+ * Sets up and runs the first part of this test.
+ */
+function executeWithoutCached()
+{
+    var i;
+    var newColor;
+    for(i=0;i<10000;i++){
+        newColor="#"+((1<<24)*Math.random()|0).toString(16);                    //code to select random color
+        document.getElementById("div2").style.backgroundColor=newColor;         //change background color of div2 div
+    }
+}
+/*
+ * Sets up and runs the second part of this test.
+ */
+function executeWithCached()
+{
+    var i;
+    var newColor;
+    var colorDiv=document.getElementById("div2");                               //cache the variable
+    for(i=0;i<10000;i++){
+        newColor="#"+((1<<24)*Math.random()|0).toString(16);                    //code to select random color
+        colorDiv.style.backgroundColor=newColor;                                //change background color of div2 div
+    }
+}</pre></div>
 <span style="color:silver; font-size:12px; font-family:Mate; position:fixed; bottom:0px; left:3px;">JS Bonnes Pratiques Example 1 - Anthony Economides</span>
 
     </body>

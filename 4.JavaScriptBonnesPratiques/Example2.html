@@ -9,6 +9,8 @@
        <script type="text/javascript" src='Resources/jquery-2.0.3.min.js'></script>
        <link href='Resources/Stylesheet.css' rel='stylesheet' type='text/css'/>
        <script type="text/javascript" src='Resources/Example2.js'></script>
+       <script type="text/javascript" src='Resources/Common.js'></script>
+       <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=javascript&skin=sons-of-obsidian"></script>
        
        <title>Example 2 - String Joining - Anthony Economides</title>
 
@@ -16,7 +18,7 @@
        <link href='https://fonts.googleapis.com/css?family=Telex' rel='stylesheet' type='text/css'/>
 
     </head>
-    <body >
+    <body onload="prettyPrint()">
         <div class="div1">Example 2 - String Joining</div>
         <div class="buttondiv1"><a class="backButton" href="index.html"><img style="vertical-align:middle" alt="" src="Resources/back.png"/>Retour</a></div>
         <br/>
@@ -24,7 +26,49 @@
             Puis le processus se répèterai pour un deuxième string mais en utilisant un array des strings et en les faisant join en final.<br/>
             Le temps d'exécution des deux cas sera annoncé.
             <br/><br/><button onclick="runTest2()">Run Test</button></div>
-        
+        <div class="tab" onclick="SlideCodeUp()">Afficher Code</div>
+            <div class="codeDisplay" ><pre class="prettyprint linenums">var String1="Voiture";
+var String2=['V','o','i','t','u','r','e'];
+
+/*
+ * Sets up and runs the first test.
+ */
+function runTest2(){
+    var beforeTime = new Date().getTime();                                      //Prepare and get time variables
+    var afterTime= new Date().getTime();
+    beforeTime = new Date().getTime();
+    executeWithoutJoin();                                                       //run first part of the test, "using +="
+    afterTime= new Date().getTime();
+    var temp1=afterTime-beforeTime;                                             //get execution time of first part of test
+    beforeTime=new Date().getTime();                                            //reinitialize timers
+    executeWithJoin();                                                          //run second part of the test,"using push() & join()"
+    afterTime= new Date().getTime();
+    var temp2=afterTime-beforeTime;                                             //get execution time of second part of test
+    alert("+= time="+temp1+" milliseconds \n push() & join() time="+temp2+" milliseconds");
+}
+/*
+ * Runs the first part of this test.
+ */
+function executeWithoutJoin()
+{
+    for(var i=0;i<500000;i++){
+        String1+="Voiture";                                                     //append "Voiture" using +=
+    }
+    return String1;
+}
+/*
+ * Sets up and runs the second part of this test.
+ */
+function executeWithJoin()
+{
+    for(var i=0;i<500000;i++){
+        for (var j = 0; j < 7; j++) {                                           //j is a character index for the word "Voiture" 
+            String2.push(String2[j]);                                           //push the next character into the String array
+        }
+    }
+    String2.join('');                                                           
+    return String2;
+}</pre></div>
 <span style="color:silver; font-size:12px; font-family:Mate; position:fixed; bottom:0px; left:3px;">JS Bonnes Pratiques Example 2 - Anthony Economides</span>
 
     </body>
