@@ -1,0 +1,30 @@
+Avant toute chose :
+- Installer Node : http://nodejs.org/
+- Installer Git  : http://git-scm.com/book/en/Getting-Started-Installing-Git
+
+Il est ensuite possible d'installer tous les autres outils nécessaires via les commandes suivantes :
+
+Installer Yeoman (y compris Grunt et Bower)
+-> npm install -g yo
+
+Installer le générateur AngularJS
+-> npm install -g generator-angular
+
+Il est maintenant possible de lancer un projet en ouvrant une fenêtre de commandes dans le
+dossier correspondant à celui-ci :
+
+Création du nouveau projet avec angularJS
+-> yo angular
+
+Tous les fichiers nécessaires sont alors créés dans le dossier correspondant. Le projet peut démarrer :
+
+Lancer les tests de l'application
+-> grunt test
+
+Prévisualiser les modifications (travailler) en direct
+-> grunt server
+
+Compiler l'application afin de la déployer
+-> grunt
+
+Ce document ne présente que les commandes les plus basiques nécessaires au développement d'une appli web.
