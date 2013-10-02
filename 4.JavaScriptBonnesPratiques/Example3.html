@@ -8,24 +8,24 @@
        
        <script type="text/javascript" src='Resources/jquery-2.0.3.min.js'></script>
        <link href='Resources/Stylesheet.css' rel='stylesheet' type='text/css'/>
-       <script type="text/javascript" src='Resources/Example2.js'></script>
+       <script type="text/javascript" src='Resources/Example3.js'></script>
        
-       <title>Example 2 - String Joining - Anthony Economides</title>
+       <title>Example 3 - Réutiliser les grands tableaux - Anthony Economides</title>
 
        <link href='https://fonts.googleapis.com/css?family=Mate' rel='stylesheet' type='text/css'/>
        <link href='https://fonts.googleapis.com/css?family=Telex' rel='stylesheet' type='text/css'/>
 
     </head>
     <body >
-        <div class="div1">Example 2 - String Joining</div>
+        <div class="div1">Example 3 - Réutiliser les grands tableaux</div>
         <div class="buttondiv1"><a class="backButton" href="index.html"><img style="vertical-align:middle" alt="" src="Resources/back.png"/>Retour</a></div>
         <br/>
-        <div class="div3">Ce test va créer un string en JS et après concaténera le mot « Voiture » 500 000 fois en utilisant  l’expressions String1+="Voiture" .<br/>
-            Puis le processus se répèterai pour un deuxième string mais en utilisant un array des strings et en les faisant join en final.<br/>
-            Le temps d'exécution des deux cas sera annoncé.
-            <br/><br/><button onclick="runTest2()">Run Test</button></div>
+        <div class="div3">Ce test va créer un grand tableau de 15 000 000 cellules puis le remplira avec des int aléatoires.<br/>
+            Ensuite il écrasera ce tableau avec arr=[ ] et le recréera. Finalement il réutilisera le tableau avec<br/>
+            arr.length=0. Le temps d'exécution des deux derniers processus sera annoncé.<br/>Notez que le test prend quelques secondes à s'executer.
+            <br/><br/><button onclick="runTest3()">Run Test</button></div>
         
-<span style="color:silver; font-size:12px; font-family:Mate; position:fixed; bottom:0px; left:3px;">JS Bonnes Pratiques Example 2 - Anthony Economides</span>
+<span style="color:silver; font-size:12px; font-family:Mate; position:fixed; bottom:0px; left:3px;">JS Bonnes Pratiques Example 3 - Anthony Economides</span>
 
     </body>
 </html>

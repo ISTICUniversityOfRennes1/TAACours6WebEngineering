@@ -1,38 +1,43 @@
 var String1="Voiture";
 var String2=['V','o','i','t','u','r','e'];
 
+/*
+ * Sets up and runs the first test.
+ */
 function runTest2(){
-    var beforeTime = new Date().getTime();
+    var beforeTime = new Date().getTime();                                      //Prepare and get time variables
     var afterTime= new Date().getTime();
     beforeTime = new Date().getTime();
-    executeWithoutJoin();
+    executeWithoutJoin();                                                       //run first part of the test, "using +="
     afterTime= new Date().getTime();
-    var temp1=afterTime-beforeTime;
-    beforeTime=new Date().getTime();
-    executeWithJoin();
+    var temp1=afterTime-beforeTime;                                             //get execution time of first part of test
+    beforeTime=new Date().getTime();                                            //reinitialize timers
+    executeWithJoin();                                                          //run second part of the test,"using push() & join()"
     afterTime= new Date().getTime();
-    var temp2=afterTime-beforeTime;
-    alert("+= time="+temp1+" milliseconds \n push&join time="+temp2+" milliseconds");
+    var temp2=afterTime-beforeTime;                                             //get execution time of second part of test
+    alert("+= time="+temp1+" milliseconds \n push() & join() time="+temp2+" milliseconds");
 }
-
+/*
+ * Runs the first part of this test.
+ */
 function executeWithoutJoin()
 {
-    var i;
-    for(i=0;i<1000000;i++){
-        String1+="Voiture"+"Voiture";
+    for(var i=0;i<500000;i++){
+        String1+="Voiture";                                                     //append "Voiture" using +=
     }
     return String1;
 }
-
+/*
+ * Sets up and runs the second part of this test.
+ */
 function executeWithJoin()
 {
-    var i,j=0;
-    for(i=0;i<1000000;i++){
-        String2.push(String[j]);
-        j++;
-        if(j == 7) { j=0 }
+    for(var i=0;i<500000;i++){
+        for (var j = 0; j < 7; j++) {                                           //j is a character index for the word "Voiture" 
+            String2.push(String2[j]);                                           //push the next character into the String array
+        }
     }
-    String2.join('');
+    String2.join('');                                                           
     return String2;
 }
 
