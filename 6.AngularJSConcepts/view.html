@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		<script src="http://code.angularjs.org/1.2.0-rc.2/angular.min.js"></script>
+		<script>
+		function aController( $scope ) {
+			$scope.list = ['un', 'deux', 'trois'];
+			
+			$scope.print = function(){
+				$scope.name = $scope.inputName;
+			};
+
+			$scope.edit = function(){
+				if( $scope.checkbox_modify ){
+					console.log("List edition");
+					var res = $scope.list.push($scope.inputName);
+					console.log(res);
+				}else{
+					console.log("Modification not allowed");
+				}
+			};
+
+			$scope.name = "Test angularJS.";
+		}
+		</script>
+	</head>
+	<body>
+		<div ng-controller="aController">
+			<input ng-model="inputName" ng-change="print()"/>
+			<input ng-model="checkbox_modify" type="checkbox"/>                
+			<button ng-model="list_display" ng-click="edit()">Ajouter</button>
+			<p>{{name}}</p>
+			<pre>liste : {{list}}</pre>
+			<ul>
+				<li ng-repeat="t in list track by $index">{{t}}</li>
+			</ul>
+		</div>                  
+	</body>
+</html>
